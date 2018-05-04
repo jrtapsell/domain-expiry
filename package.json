@@ -1,0 +1,14 @@
+{
+  "name": "domain-expiry",
+  "version": "1.0.0",
+  "description": "Checks the expiry date of a domain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "James Tapsell <npm@jrtapsell.co.uk> (https://www.jrtapsell.co.uk)",
+  "license": "ISC",
+  "devDependencies": {
+    "moment": "^2.22.1"
+  }
+}
