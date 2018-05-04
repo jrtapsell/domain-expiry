@@ -12,21 +12,12 @@ function grabWhois(domain, server) {
 
             let buffer = "";
 
-            client.connect(43, server, function () {
-                client.write(domain + "\r\n");
-            });
+            client.connect(43, server, () => client.write(domain + "\r\n"));
 
-            client.on("data", function (data) {
-                buffer += data;
-            });
+            client.on("data", (data) => buffer += data);
+            client.on("close", () => resolve(buffer));
+            client.on("error", (err) => reject(err));
 
-            client.on("close", function () {
-                resolve(buffer);
-            });
-
-            client.on("error", function (err) {
-                reject(err);
-            });
         } catch (err) {
             reject(err);
         }
@@ -52,8 +43,8 @@ function recursiveWhois(domain, server, resolve, reject) {
 
 function whois(domain) {
     return new Promise((resolve, reject) => {
-        recursiveWhois(domain, null, resolve, reject)
-    })
+        recursiveWhois(domain, null, resolve, reject);
+    });
 }
 
 
@@ -67,7 +58,7 @@ function parseDate(date) {
         if (ukForm) {
             resolve(moment(date, "DD/MM/YYYY").toDate());
         }
-        let iso = date.match(/[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(.[0-9]+)?Z/);
+        let iso = date.match(/[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(.[0-9]{1,3})?Z/);
         if (iso) {
             resolve(moment(date).toDate());
         }
@@ -81,7 +72,7 @@ function getExpiry(domain) {
         return Promise.reject("Domain cannot be undefined");
     }
     return whois(domain)
-      .then(data => {
+      .then((data) => {
           const expireLine = data.match(/expiry date:\s*([^\s]+)/i);
           if (expireLine) {
               return parseDate(expireLine[1]);
