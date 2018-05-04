@@ -5,8 +5,8 @@
 
 # Usage
     const domain = require("domain-expiry");
-    index.getExpiry("jrtapsell.co.uk")
-        .then(p => console.log("jrtapsell.co.uk expires on: " + p);
+    domain.getExpiry("jrtapsell.co.uk")
+        .then(p => console.log("jrtapsell.co.uk expires on: " + p));
 
 # Supported TLDs
 
