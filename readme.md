@@ -1,4 +1,6 @@
 # domain-expiry
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry?ref=badge_shield)
+
 
 # Features
 - Allows checking the expiry date of a domain
@@ -21,3 +23,6 @@ This list is not exhaustive, if TLDs are not supported feel free to open an issu
 # Issues
 
 Feel free to raise any issues on the linked Github repository.
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry?ref=badge_large)
