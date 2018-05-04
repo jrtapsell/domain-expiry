@@ -86,7 +86,7 @@ function getExpiry(domain) {
               return parseDate(expireLine[2]);
           }
           return Promise.reject("Cannot parse the whois data\n" + data);
-      })
+      });
 }
 
 module.exports = {
