@@ -71,7 +71,7 @@ function parseDate(date) {
             }
         });
         reject("Cannot parse: " + date);
-    })
+    });
 }
 
 
