@@ -1,4 +1,5 @@
 # domain-expiry
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6a6d2795313e458bb7b09ab02a4b2bdb)](https://app.codacy.com/app/jrtapsell/domain-expiry?utm_source=github.com&utm_medium=referral&utm_content=jrtapsell/domain-expiry&utm_campaign=badger)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry?ref=badge_shield)
 
 
