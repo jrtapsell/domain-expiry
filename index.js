@@ -1,12 +1,9 @@
-const net = require('net');
+const net = require("net");
 const moment = require("moment");
 
 function grabWhois(domain, server) {
-    if (server === undefined) {
-        server = "whois.iana.org"
-    }
-    if (domain === undefined) {
-        return Promise.reject("Domain cannot be undefined")
+    if (server === null) {
+        server = "whois.iana.org";
     }
     return new Promise((resolve, reject) => {
         try {
@@ -15,50 +12,39 @@ function grabWhois(domain, server) {
 
             let buffer = "";
 
-            client.connect(43, server, function () {
-                client.write(domain + '\r\n');
-            });
+            client.connect(43, server, () => client.write(domain + "\r\n"));
 
-            client.on('data', function (data) {
-                buffer += data;
-            });
+            client.on("data", (data) => buffer += data);
+            client.on("close", () => resolve(buffer));
+            client.on("error", (err) => reject(err));
 
-            client.on('close', function () {
-                resolve(buffer)
-            });
-
-            client.on('error', function (err) {
-                reject(err)
-            })
         } catch (err) {
-            reject(err)
+            reject(err);
         }
     });
 }
 
 function recursiveWhois(domain, server, resolve, reject) {
     grabWhois(domain, server)
-      .then(data => {
+      .then((data) => {
           let refer = data.match(/refer: *([^\s]+)/);
           if (refer) {
               let newServer = refer[1];
               if (newServer !== server) {
-                  recursiveWhois(domain, newServer, resolve, reject)
+                  recursiveWhois(domain, newServer, resolve, reject);
               } else {
-                  resolve(data)
+                  resolve(data);
               }
           } else {
-                resolve(data)
+                resolve(data);
           }
-      }).catch(err => {
-          reject(err)
-    })
+      }).catch(reject);
 }
 
 function whois(domain) {
     return new Promise((resolve, reject) => {
-        recursiveWhois(domain, undefined, resolve, reject)
-    })
+        recursiveWhois(domain, null, resolve, reject);
+    });
 }
 
 
@@ -66,32 +52,35 @@ function parseDate(date) {
     return new Promise((resolve, reject) => {
         let textual = date.match(/[0-9]{1,2}-[A-Z][a-z]{2}-[0-9]{4}/);
         if (textual) {
-            resolve(moment(date, "D-MMM-YYYY").toDate())
+            resolve(moment(date, "D-MMM-YYYY").toDate());
         }
         let ukForm = date.match(/([0-9]{2})\/([0-9]{2})\/([0-9]{4})/);
         if (ukForm) {
             resolve(moment(date, "DD/MM/YYYY").toDate());
         }
-        let iso = date.match(/[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(.[0-9]+)?Z/);
+        let iso = date.match(/[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(.[0-9]{1,3})?Z/);
         if (iso) {
             resolve(moment(date).toDate());
         }
-        reject("Cannot parse: " + date)
+        reject("Cannot parse: " + date);
     })
 }
 
 
 function getExpiry(domain) {
+    if (typeof domain === "undefined") {
+        return Promise.reject("Domain cannot be undefined");
+    }
     return whois(domain)
-      .then(data => {
+      .then((data) => {
           const expireLine = data.match(/expiry date:\s*([^\s]+)/i);
           if (expireLine) {
               return parseDate(expireLine[1]);
           }
-          return Promise.reject("Cannot parse the whois data\n" + data)
+          return Promise.reject("Cannot parse the whois data\n" + data);
       })
 }
 
 module.exports = {
-    getExpiry: getExpiry
+    getExpiry
 };
