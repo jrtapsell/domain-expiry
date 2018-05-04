@@ -10,5 +10,6 @@
   "license": "ISC",
   "devDependencies": {
     "moment": "^2.22.1"
-  }
+  },
+  "repository": "github:jrtapsell/domain-expiry"
 }
