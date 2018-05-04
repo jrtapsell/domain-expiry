@@ -1,12 +1,12 @@
-const net = require('net');
+const net = require("net");
 const moment = require("moment");
 
 function grabWhois(domain, server) {
     if (server === undefined) {
-        server = "whois.iana.org"
+        server = "whois.iana.org";
     }
     if (domain === undefined) {
-        return Promise.reject("Domain cannot be undefined")
+        return Promise.reject("Domain cannot be undefined");
     }
     return new Promise((resolve, reject) => {
         try {
@@ -16,22 +16,22 @@ function grabWhois(domain, server) {
             let buffer = "";
 
             client.connect(43, server, function () {
-                client.write(domain + '\r\n');
+                client.write(domain + "\r\n");
             });
 
-            client.on('data', function (data) {
+            client.on("data", function (data) {
                 buffer += data;
             });
 
-            client.on('close', function () {
-                resolve(buffer)
+            client.on("close", function () {
+                resolve(buffer);
             });
 
-            client.on('error', function (err) {
-                reject(err)
+            client.on("error", function (err) {
+                reject(err);
             })
         } catch (err) {
-            reject(err)
+            reject(err);
         }
     });
 }
@@ -43,14 +43,14 @@ function recursiveWhois(domain, server, resolve, reject) {
           if (refer) {
               let newServer = refer[1];
               if (newServer !== server) {
-                  recursiveWhois(domain, newServer, resolve, reject)
+                  recursiveWhois(domain, newServer, resolve, reject);
               } else {
-                  resolve(data)
+                  resolve(data);
               }
           } else {
-                resolve(data)
+                resolve(data);
           }
-      }).catch(err => {
+      }).catch((err) => {
           reject(err)
     })
 }
@@ -66,7 +66,7 @@ function parseDate(date) {
     return new Promise((resolve, reject) => {
         let textual = date.match(/[0-9]{1,2}-[A-Z][a-z]{2}-[0-9]{4}/);
         if (textual) {
-            resolve(moment(date, "D-MMM-YYYY").toDate())
+            resolve(moment(date, "D-MMM-YYYY").toDate());
         }
         let ukForm = date.match(/([0-9]{2})\/([0-9]{2})\/([0-9]{4})/);
         if (ukForm) {
@@ -76,7 +76,7 @@ function parseDate(date) {
         if (iso) {
             resolve(moment(date).toDate());
         }
-        reject("Cannot parse: " + date)
+        reject("Cannot parse: " + date);
     })
 }
 
@@ -88,7 +88,7 @@ function getExpiry(domain) {
           if (expireLine) {
               return parseDate(expireLine[1]);
           }
-          return Promise.reject("Cannot parse the whois data\n" + data)
+          return Promise.reject("Cannot parse the whois data\n" + data);
       })
 }
 
