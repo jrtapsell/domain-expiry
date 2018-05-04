@@ -1,5 +1,5 @@
 # domain-expiry
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry?ref=badge_shield)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry?ref=badge_shield)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4cbab68172b64225bdb4da39d89a93ca)](https://www.codacy.com/app/jrtapsell/domain-expiry?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jrtapsell/domain-expiry&amp;utm_campaign=Badge_Grade)
 
 
 # Features
