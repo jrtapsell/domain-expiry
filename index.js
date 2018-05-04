@@ -29,7 +29,7 @@ function grabWhois(domain, server) {
 
             client.on("error", function (err) {
                 reject(err);
-            })
+            });
         } catch (err) {
             reject(err);
         }
@@ -38,7 +38,7 @@ function grabWhois(domain, server) {
 
 function recursiveWhois(domain, server, resolve, reject) {
     grabWhois(domain, server)
-      .then(data => {
+      .then((data) => {
           let refer = data.match(/refer: *([^\s]+)/);
           if (refer) {
               let newServer = refer[1];
@@ -50,9 +50,7 @@ function recursiveWhois(domain, server, resolve, reject) {
           } else {
                 resolve(data);
           }
-      }).catch((err) => {
-          reject(err)
-    })
+      }).catch(reject);
 }
 
 function whois(domain) {
@@ -93,5 +91,5 @@ function getExpiry(domain) {
 }
 
 module.exports = {
-    getExpiry: getExpiry
+    getExpiry
 };
