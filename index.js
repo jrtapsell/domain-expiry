@@ -2,11 +2,8 @@ const net = require("net");
 const moment = require("moment");
 
 function grabWhois(domain, server) {
-    if (server === undefined) {
+    if (server === null) {
         server = "whois.iana.org";
-    }
-    if (domain === undefined) {
-        return Promise.reject("Domain cannot be undefined");
     }
     return new Promise((resolve, reject) => {
         try {
@@ -55,7 +52,7 @@ function recursiveWhois(domain, server, resolve, reject) {
 
 function whois(domain) {
     return new Promise((resolve, reject) => {
-        recursiveWhois(domain, undefined, resolve, reject)
+        recursiveWhois(domain, null, resolve, reject)
     })
 }
 
@@ -80,6 +77,9 @@ function parseDate(date) {
 
 
 function getExpiry(domain) {
+    if (typeof domain === "undefined") {
+        return Promise.reject("Domain cannot be undefined");
+    }
     return whois(domain)
       .then(data => {
           const expireLine = data.match(/expiry date:\s*([^\s]+)/i);
