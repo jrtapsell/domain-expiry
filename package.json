@@ -1,18 +1,24 @@
 {
   "name": "domain-expiry",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Checks the expiry date of a domain",
   "main": "index.js",
   "scripts": {
-    "test": "nodeunit"
+    "test": "jest"
   },
   "author": "James Tapsell <npm@jrtapsell.co.uk> (https://www.jrtapsell.co.uk)",
   "license": "ISC",
   "dependencies": {
-    "moment": "^2.22.1"
+    "moment": "^2.22.1",
+    "request": "^2.34"
   },
   "devDependencies": {
-    "nodeunit": "^0.11.2"
+    "codacy-coverage": "^3.0.0",
+    "jest": "^22.4.3"
   },
-  "repository": "github:jrtapsell/domain-expiry"
+  "repository": "github:jrtapsell/domain-expiry",
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  }
 }

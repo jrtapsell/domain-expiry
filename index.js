@@ -77,7 +77,7 @@ function parseDate(date) {
 
 function getExpiry(domain) {
     if (typeof domain === "undefined") {
-        return Promise.reject("Domain cannot be undefined");
+        return Promise.reject(new Error("Domain cannot be undefined"));
     }
     return whois(domain)
       .then((data) => {
