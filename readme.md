@@ -10,6 +10,8 @@
     domain.getExpiry("jrtapsell.co.uk")
         .then(p => console.log("jrtapsell.co.uk expires on: " + p));
 
+[RunKit](https://runkit.com/embed/1yqqvcyhpydi)
+
 # Supported TLDs
 
 This list is not exhaustive, if TLDs are not supported feel free to open an issue on GitHub.
@@ -19,6 +21,8 @@ This list is not exhaustive, if TLDs are not supported feel free to open an issu
 - .org
 - .tech
 - .net
+
+See wiki for more information.
 
 # Issues
 

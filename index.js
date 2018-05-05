@@ -36,7 +36,7 @@ function recursiveWhois(domain, server, resolve, reject) {
                   resolve(data);
               }
           } else {
-                resolve(data);
+              resolve(data);
           }
       }).catch(reject);
 }
@@ -85,7 +85,7 @@ function getExpiry(domain) {
           if (expireLine) {
               return parseDate(expireLine[2]);
           }
-          return Promise.reject("Cannot parse the whois data\n" + data);
+          return Promise.reject(new Error("Cannot parse the whois data"));
       });
 }
 
