@@ -1,5 +1,5 @@
 # domain-expiry
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry?ref=badge_shield)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4cbab68172b64225bdb4da39d89a93ca)](https://www.codacy.com/app/jrtapsell/domain-expiry?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jrtapsell/domain-expiry&amp;utm_campaign=Badge_Grade)[![Build Status](https://travis-ci.org/jrtapsell/domain-expiry.svg?branch=master)](https://travis-ci.org/jrtapsell/domain-expiry)[![npm version](https://badge.fury.io/js/domain-expiry.svg)](https://badge.fury.io/js/domain-expiry)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry?ref=badge_shield)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4cbab68172b64225bdb4da39d89a93ca)](https://www.codacy.com/app/jrtapsell/domain-expiry?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jrtapsell/domain-expiry&amp;utm_campaign=Badge_Grade)[![Build Status](https://travis-ci.org/jrtapsell/domain-expiry.svg?branch=master)](https://travis-ci.org/jrtapsell/domain-expiry)[![npm version](https://badge.fury.io/js/domain-expiry.svg)](https://badge.fury.io/js/domain-expiry)[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/1824/badge)](https://bestpractices.coreinfrastructure.org/projects/1824)
 
 
 # Features
@@ -27,6 +27,12 @@ See wiki for more information.
 # Issues
 
 Feel free to raise any issues on the linked Github repository.
+
+# Contribution
+
+Feel free to submit PRs to the linked Github repository.
+
+PRs should have no issues on Codacy, and pass the tests on Travis.
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry?ref=badge_large)
