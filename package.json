@@ -13,8 +13,7 @@
   },
   "devDependencies": {
     "codacy-coverage": "^3.0.0",
-    "jest": "^22.4.3",
-    "nodeunit": "^0.11.2"
+    "jest": "^22.4.3"
   },
   "repository": "github:jrtapsell/domain-expiry",
   "jest": {

@@ -3,5 +3,5 @@ node_js:
   - "node"
   - "lts/*"
 install:
-  - npm install -g codecov
+  - npm install -g codecov jest
 script: "jest && codecov"
