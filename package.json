@@ -20,5 +20,6 @@
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true
-  }
+  },
+  "keywords": ["dns", "domain", "expiry"]
 }
