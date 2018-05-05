@@ -34,5 +34,8 @@ Feel free to submit PRs to the linked Github repository.
 
 PRs should have no issues on Codacy, and pass the tests on Travis.
 
+# Vulnerabilities
+
+If you wish to report a vulnerability publicly, feel free to use GitHub, or if it is more serious, or you wish to remain anonymous, contact me via [Keybase](https://keybase.io/jrtapsell).
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjrtapsell%2Fdomain-expiry?ref=badge_large)
