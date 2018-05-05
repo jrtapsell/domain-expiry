@@ -4,8 +4,7 @@
   "description": "Checks the expiry date of a domain",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test-with-coverage": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage"
+    "test": "jest"
   },
   "author": "James Tapsell <npm@jrtapsell.co.uk> (https://www.jrtapsell.co.uk)",
   "license": "ISC",
@@ -17,5 +16,9 @@
     "jest": "^22.4.3",
     "nodeunit": "^0.11.2"
   },
-  "repository": "github:jrtapsell/domain-expiry"
+  "repository": "github:jrtapsell/domain-expiry",
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  }
 }
