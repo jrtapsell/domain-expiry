@@ -21,5 +21,9 @@
     "coverageDirectory": "./coverage/",
     "collectCoverage": true
   },
-  "keywords": ["dns", "domain", "expiry"]
+  "keywords": [
+    "dns",
+    "domain",
+    "expiry"
+  ]
 }
