@@ -1,6 +1,6 @@
 {
   "name": "domain-expiry",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Checks the expiry date of a domain",
   "main": "index.js",
   "scripts": {
