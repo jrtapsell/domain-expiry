@@ -4,7 +4,7 @@
   "description": "Checks the expiry date of a domain",
   "main": "index.js",
   "scripts": {
-    "test": "nodeunit ./test.js"
+    "test": "nodeunit"
   },
   "author": "James Tapsell <npm@jrtapsell.co.uk> (https://www.jrtapsell.co.uk)",
   "license": "ISC",
