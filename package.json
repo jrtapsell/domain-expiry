@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "moment": "^2.22.1",
-    "request":"^2.34"
+    "request": "^2.34"
   },
   "devDependencies": {
     "codacy-coverage": "^3.0.0",
