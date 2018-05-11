@@ -25,5 +25,7 @@
     "dns",
     "domain",
     "expiry"
-  ]
+  ],
+  "homepage": "https://gh.jrtapsell.co.uk/domain-expiry",
+  "bugs": "https://github.com/jrtapsell/domain-expiry/issues"
 }
