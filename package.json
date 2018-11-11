@@ -1,6 +1,6 @@
 {
   "name": "domain-expiry",
-  "version": "1.0.11",
+  "version": "1.2.0",
   "description": "Checks the expiry date of a domain",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,9 @@
   "repository": "github:jrtapsell/domain-expiry",
   "jest": {
     "coverageDirectory": "./coverage/",
-    "collectCoverage": true
+    "collectCoverage": true,
+    "verbose": true,
+    "testURL": "http://localhost/"
   },
   "keywords": [
     "dns",
