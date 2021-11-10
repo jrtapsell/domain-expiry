@@ -59,7 +59,16 @@ const dateFormats = [
     {
         regex: /[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(.[0-9]{1,3})?Z/,
         handler: (date) => moment(date).toDate()
-    }
+    },
+    ,
+    {
+        regex: /([0-9]{4})-([0-9]{2})-([0-9]{2})/,
+        handler: (date) => moment(date, "YYYY-MM-DD").toDate()
+    },
+    {
+        regex: /([0-9]{2}).([0-9]{2}).([0-9]{4})/,
+        handler: (date) => moment(date, "DD.MM.YYYY").toDate()
+    },
 ];
 
 function parseDate(date) {
@@ -81,7 +90,7 @@ function getExpiry(domain) {
     }
     return whois(domain)
       .then((data) => {
-          const expireLine = data.match(/(expiry|renewal)[^:]+:\s*([^\s]+)/i);
+          const expireLine = data.match(/(expir|renew)[^:]+:\s*([^\s]+)/i);
           if (expireLine) {
               return parseDate(expireLine[2]);
           }
