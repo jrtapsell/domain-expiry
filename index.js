@@ -46,7 +46,7 @@ function whois(domain) {
         recursiveWhois(domain, null, resolve, reject);
     });
 }
-
+ 
 const dateFormats = [
     {
         regex: /[0-9]{1,2}-[A-Z][a-z]{2}-[0-9]{4}/,
@@ -59,19 +59,72 @@ const dateFormats = [
     {
         regex: /[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(.[0-9]{1,3})?Z/,
         handler: (date) => moment(date).toDate()
-    }
+    },
+    {
+        regex: /([0-9]{4})-([0-9]{2})-([0-9]{2})/,
+        handler: (date) => moment(date, "YYYY-MM-DD").toDate()
+    },
+    {
+        regex: /([0-9]{2}).([0-9]{2}).([0-9]{4})/,
+        handler: (date) => moment(date, "DD.MM.YYYY").toDate()
+    },
+    {
+        regex: /([0-9]{2})-([0-9]{2})-([0-9]{4})/,
+        handler: (date) => moment(date, "DD-MM-YYYY").toDate()
+    },
+    {
+        regex: /([0-9]{2}).([0-9]{1}).([0-9]{4})/,
+        handler: (date) => moment(date, "DD.M.YYYY").toDate()
+    },
+    {
+        regex: /([0-9]{4}).([0-9]{2}).([0-9]{2})/,
+        handler: (date) => moment(date, "YYYY.MM.DD").toDate()
+    },
+    {
+        regex: /([0-9]{4})\/([0-9]{2})\/([0-9]{2})/,
+        handler: (date) => moment(date, "YYYY/MM/DD").toDate()
+    },
+    {
+        regex: /([0-9]{4})([0-9]{2})([0-9]{2})/,
+        handler: (date) => moment(date, "YYYYMMDD").toDate()
+    },
+    {
+        regex: /[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z/,
+        handler: (date) => moment(date).toDate()
+    },
+    {
+        regex: /[0-9]{2}-[a-z]{3}-[0-9]{4}/i,
+        handler: (date) => moment(date, "DD-MMM-YYYY").toDate()
+    },
+    {
+        regex: /[a-z]{1,10} [0-9]{2} [0-9]{4}/i,
+        handler: (date) => moment(date,"MMMM DD YYYY").toDate()
+    },
+
+
 ];
+ 
 
 function parseDate(date) {
-    return new Promise((resolve, reject) => {
-        dateFormats.forEach((value) => {
-            const match = date.match(value.regex);
-            if (match) {
-                resolve(value.handler(date));
-            }
-        });
-        reject("Cannot parse: " + date);
-    });
+
+
+        for(let i = 0; i < dateFormats.length; i++)
+        {
+              let value = dateFormats[i];
+
+              const match = date.match(value.regex);
+                    
+              if (match) 
+              {
+         
+                  return value.handler(date);
+              }
+          
+        }
+ 
+
+        return null;
+    
 }
 
 
@@ -81,10 +134,43 @@ function getExpiry(domain) {
     }
     return whois(domain)
       .then((data) => {
-          const expireLine = data.match(/(expiry|renewal)[^:]+:\s*([^\s]+)/i);
-          if (expireLine) {
-              return parseDate(expireLine[2]);
+          
+          let lines = data.split(/\r\n|\n\r|\n|\r/);
+
+
+          for (var i = 0; i < lines.length; i++) 
+          {
+            
+             let line = lines[i];
+ 
+             //console.log( "Line: " + line);
+              
+             const expireLine = line.match(/(expir|renew|valid|paid)[^:]+:\s*([^\s]+)/i);
+
+             if (expireLine) 
+             {
+                
+                const line_split = line.split(":");
+
+                let date = line_split[1].trim();
+
+                //console.log("expireLine :"+ expireLine);
+                //console.log("Found expirline " + date);
+                //console.log("Found line " + line);
+                
+                let parse_result = parseDate(date);
+
+                if ( parse_result != null )
+                { 
+                       return Promise.resolve(parse_result);
+                }
+
+ 
+              }
+
           }
+
+ 
           return Promise.reject(new Error("Cannot parse the whois data"));
       });
 }
